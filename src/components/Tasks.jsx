@@ -10,11 +10,7 @@ const Tasks = ({ tasks ,deleteTask}) => {
         deleteTask={deleteTask}/>
       ))}
 
-      <input
-        type="submit"
-        value="Borrar todas"
-        className="bg-red-600 text-white py-3 px-6 rounded-md font-bold"
-      />
+      
     </div>
   );
 };
