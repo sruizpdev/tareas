@@ -1,13 +1,20 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import './App.css'
+import Form from "./components/Form";
+import Header from "./components/Header";
+import Tasks from "./components/Tasks";
+import { useState } from "react";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [tasks, setTasks] = useState([]);
 
+
+  
   return (
-    <h1 className='text-3xl'>test</h1>
-  )
+    <div className="container w-2/5 mx-auto">
+      <Header />
+      <Form tasks={tasks} setTasks={setTasks}/>
+      <Tasks tasks={tasks}/>
+    </div>
+  );
 }
 
-export default App
+export default App;
