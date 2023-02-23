@@ -4,7 +4,9 @@ const Tasks = ({ tasks }) => {
   return (
     <div className="py-3">
       {tasks.map((task) => (
-        <Task task={task} />
+        <Task 
+        key={task.id}
+        task={task} />
       ))}
 
       <input
