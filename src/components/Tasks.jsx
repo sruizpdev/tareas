@@ -1,12 +1,13 @@
 import Task from "./Task";
 
-const Tasks = ({ tasks }) => {
+const Tasks = ({ tasks ,deleteTask}) => {
   return (
     <div className="py-3">
       {tasks.map((task) => (
         <Task 
         key={task.id}
-        task={task} />
+        task={task} 
+        deleteTask={deleteTask}/>
       ))}
 
       <input

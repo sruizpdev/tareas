@@ -19,11 +19,15 @@ function App() {
     }
   }, [tasks, tasksLS]);
 
+  const deleteTask = (id) => {
+    const updatedTasks = tasks.filter((task) => task.id !== id);
+    setTasks([...updatedTasks]);
+  };
   return (
     <div className="container w-2/5 mx-auto">
       <Header />
       <Form tasks={tasks} setTasks={setTasks} />
-      <Tasks tasks={tasks} />
+      <Tasks tasks={tasks} deleteTask={deleteTask} />
     </div>
   );
 }

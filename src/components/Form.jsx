@@ -45,11 +45,7 @@ const Form = ({ tasks, setTasks }) => {
           value="Añadir tarea"
           className="bg-sky-600 text-white py-3 px-6 rounded-md font-bold"
         />
-        <input
-          type="submit"
-          value="Eliminar tarea"
-          className="bg-red-600 text-white py-3 px-6 rounded-md font-bold"
-        />
+        
       </form>
     </>
   );
