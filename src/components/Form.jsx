@@ -14,7 +14,7 @@ const Form = ({ tasks, setTasks }) => {
     };
 
     const taskObject = {
-      name: task
+      name: task,
     };
     if (task !== "") {
       taskObject.id = generateId();
@@ -32,20 +32,21 @@ const Form = ({ tasks, setTasks }) => {
 
   return (
     <>
-      <form className="flex space-x-3" onSubmit={handleSubmit}>
+      <form className="flex space-x-8" onSubmit={handleSubmit}>
         <input
           type="text"
           placeholder="Introduce aquí la tarea"
-          className="border-2 p-3 rounded-md text-lg w-3/4"
+          className="pl-3 border-2 py-3 w-3/4"
           value={task}
           onChange={(e) => setTask(e.target.value)}
         />
-        <input
+
+        <button
           type="submit"
-          value="Añadir tarea"
-          className="bg-sky-600 text-white py-3 px-6 rounded-md font-bold"
-        />
-        
+          className="bg-green-700 hover:bg-green-600 w-1/4 text-white px-3 py-3"
+        >
+          Añadir tarea
+        </button>
       </form>
     </>
   );

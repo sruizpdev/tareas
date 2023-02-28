@@ -22,7 +22,7 @@ function App() {
     setTasks([...updatedTasks]);
   };
   const editTask = (id) => {
-    let toEdit = [...tasks]
+    let toEdit = [...tasks];
     toEdit.map((task) => {
       if (task.id === id) {
         const taskUpdated = prompt(
@@ -42,16 +42,25 @@ function App() {
   };
 
   return (
-    <div className="container w-2/5 mx-auto">
-      <Header />
-      <Form tasks={tasks} setTasks={setTasks} />
-      <Tasks tasks={tasks} deleteTask={deleteTask} editTask={editTask} />
-      <button
-        className="bg-red-600 text-white py-3 px-6 rounded-md font-bold"
-        onClick={() => deleteAllTasks()}
-      >
-        Borrar todo
-      </button>
+    <div className="container md:w-full lg:w-3/5 mx-auto bg-white">
+      <div className="mb-9 mt-9">
+        <Header />
+      </div>
+
+      <div className="container mx-auto p-7">
+        <div className="w-full mb-7">
+          <Form tasks={tasks} setTasks={setTasks} />
+        </div>
+
+        <Tasks tasks={tasks} deleteTask={deleteTask} editTask={editTask} />
+
+        <button
+          className="mt-12 bg-orange-300 hover:bg-red-500 text-white px-3 m"
+          onClick={() => deleteAllTasks()}
+        >
+          Eliminar todo
+        </button>
+      </div>
     </div>
   );
 }

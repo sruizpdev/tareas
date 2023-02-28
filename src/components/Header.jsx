@@ -1,7 +1,7 @@
 const Header = () => {
   return (
-    <div className="text-center">
-      <h1 className="py-3 text-3xl text-sky-600">Mis tareas</h1>
+    <div className="text-center w-full">
+      <h1 className="text-5xl text-green-600 font-bold">Tareas</h1>
     </div>
   );
 };
