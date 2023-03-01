@@ -1,5 +1,4 @@
 import Form from "./components/Form";
-import Header from "./components/Header";
 import Tasks from "./components/Tasks";
 import { useState, useEffect } from "react";
 
@@ -42,25 +41,16 @@ function App() {
   };
 
   return (
-    <div className="container md:w-full lg:w-3/5 mx-auto bg-white">
-      <div className="mb-9 mt-9">
-        <Header />
-      </div>
+    <div className="p-5">
+      
 
-      <div className="container mx-auto p-7">
-        <div className="w-full mb-7">
-          <Form tasks={tasks} setTasks={setTasks} />
-        </div>
+      <Form tasks={tasks} setTasks={setTasks} />
 
-        <Tasks tasks={tasks} deleteTask={deleteTask} editTask={editTask} />
+      <Tasks tasks={tasks} deleteTask={deleteTask} editTask={editTask} />
 
-        <button
-          className="mt-12 bg-orange-300 hover:bg-red-500 text-white px-3 m"
-          onClick={() => deleteAllTasks()}
-        >
-          Eliminar todo
-        </button>
-      </div>
+      <button 
+      className="mt-10"
+      onClick={() => deleteAllTasks()}>Eliminar todo</button>
     </div>
   );
 }

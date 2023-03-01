@@ -32,21 +32,16 @@ const Form = ({ tasks, setTasks }) => {
 
   return (
     <>
-      <form className="flex space-x-8" onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit}>
         <input
           type="text"
           placeholder="Introduce aquí la tarea"
-          className="pl-3 border-2 py-3 w-3/4"
+          className="border-b mr-3 mb-5"
           value={task}
           onChange={(e) => setTask(e.target.value)}
         />
 
-        <button
-          type="submit"
-          className="bg-green-700 hover:bg-green-600 w-1/4 text-white px-3 py-3"
-        >
-          Añadir tarea
-        </button>
+        <button type="submit" className="font-bold">+</button>
       </form>
     </>
   );

@@ -3,6 +3,7 @@ import Task from "./Task";
 const Tasks = ({ tasks, deleteTask, editTask }) => {
   return (
     <div>
+      
       {tasks.map((task) => (
         <Task
           key={task.id}
