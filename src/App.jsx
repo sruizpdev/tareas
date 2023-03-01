@@ -28,8 +28,13 @@ function App() {
           `Actualizando la tarea: ${task.name}`,
           task.name
         );
-        task.name = taskUpdated;
-        task.id = id;
+        if (taskUpdated) {
+          task.name = taskUpdated;
+          task.id = id;
+        } else {
+          alert("La tarea no puede estar vacía");
+          return;
+        }
       }
     });
     setTasks(toEdit);
@@ -42,15 +47,19 @@ function App() {
 
   return (
     <div className="p-5">
-      
-
       <Form tasks={tasks} setTasks={setTasks} />
-
       <Tasks tasks={tasks} deleteTask={deleteTask} editTask={editTask} />
 
-      <button 
-      className="mt-10"
-      onClick={() => deleteAllTasks()}>Eliminar todo</button>
+      {tasks.length !== 0 ? (
+        <button
+          className="mt-10 text-sm text-gray-300 hover:text-red-500"
+          onClick={() => deleteAllTasks()}
+        >
+          Eliminar todo
+        </button>
+      ) : (
+        "no hay tareas"
+      )}
     </div>
   );
 }

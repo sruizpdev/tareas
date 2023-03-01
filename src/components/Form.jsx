@@ -1,4 +1,5 @@
 import { useState } from "react";
+import NewTask from "../assets/NewTask";
 
 const Form = ({ tasks, setTasks }) => {
   const [task, setTask] = useState("");
@@ -23,8 +24,6 @@ const Form = ({ tasks, setTasks }) => {
     } else {
       setError(true);
 
-      //TODO: hay que mostrar mensaje de error cuando el input esté vacío
-
       return;
     }
     setTask("");
@@ -36,12 +35,14 @@ const Form = ({ tasks, setTasks }) => {
         <input
           type="text"
           placeholder="Introduce aquí la tarea"
-          className="border-b mr-3 mb-5"
+          className="placeholder:text-gray-200 border-b mr-3 mb-5 pl-2 hover:border-green-500 focus:outline-0"
           value={task}
           onChange={(e) => setTask(e.target.value)}
         />
 
-        <button type="submit" className="font-bold">+</button>
+        <button type="submit" className="font-bold hover:text-green-500">
+          <NewTask />
+        </button>
       </form>
     </>
   );
