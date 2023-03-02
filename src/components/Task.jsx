@@ -1,26 +1,32 @@
 import Edit from "../assets/Edit";
+import { useState } from "react";
 
 const Task = ({ task, deleteTask, editTask }) => {
   const { id, name } = task;
-  const handleCheckbox = async() => {
+  const [selected, setSelected] = useState(false);
+
+  const handleCheckbox = () => {
+    setSelected(true);
     setTimeout(() => {
-      console.log("cambiando checked");
-    }, 2000);
-    await deleteTask(id);
+      deleteTask(id);
+      setSelected(false)
+    }, 1500);
   };
 
   return (
-    <div className="flex">
-      <input
-        type="checkbox"
-        className="mr-3 checked:bg-blue-500 rounded-full"
-        onChange={() => handleCheckbox()}
-      />
-      {name}
-
+    <div className="flex justify-between border border-green-500 rounded-md bg-white px-3 py-5 mb-2">
+      <div className="flex justify-start">
+        <input
+          type="checkbox"
+          id="task"
+          className=" checked:bg-green-500 mr-3"
+          onChange={() => handleCheckbox()}
+        />
+        <div className={selected ? "transition-colors duration-1000 line-through text-zinc-200" : "text-zinc-700"}>{name}</div>
+      </div>
       <button
         type="submit"
-        className="ml-3 hover:text-sky-500"
+        className=" hover:text-sky-500"
         onClick={() => editTask(id)}
       >
         <Edit />

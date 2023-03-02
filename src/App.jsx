@@ -1,6 +1,7 @@
 import Form from "./components/Form";
 import Tasks from "./components/Tasks";
 import { useState, useEffect } from "react";
+import Header from "./components/Header";
 
 function App() {
   let tasksLS = JSON.parse(localStorage.getItem("tasks"));
@@ -46,21 +47,25 @@ function App() {
   };
 
   return (
-    <div className="p-5">
-      <Form tasks={tasks} setTasks={setTasks} />
-      <Tasks tasks={tasks} deleteTask={deleteTask} editTask={editTask} />
+    <>
+      <Header />
+      <div className="container mx-auto md:w-3/5 bg-white rounded-md border border-zinc-200 mt-5 p-5">
+        <Form tasks={tasks} setTasks={setTasks} />
 
-      {tasks.length !== 0 ? (
-        <button
-          className="mt-10 text-sm text-gray-300 hover:text-red-500"
-          onClick={() => deleteAllTasks()}
-        >
-          Eliminar todo
-        </button>
-      ) : (
-        "no hay tareas"
-      )}
-    </div>
+        <Tasks tasks={tasks} deleteTask={deleteTask} editTask={editTask} />
+
+        {tasks.length !== 0 ? (
+          <button
+            className="mt-10 text-sm text-zinc-200 hover:text-red-500"
+            onClick={() => deleteAllTasks()}
+          >
+            Eliminar todo
+          </button>
+        ) : (
+          "No hay tareas"
+        )}
+      </div>
+    </>
   );
 }
 

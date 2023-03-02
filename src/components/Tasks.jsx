@@ -2,7 +2,7 @@ import Task from "./Task";
 
 const Tasks = ({ tasks, deleteTask, editTask }) => {
   return (
-    <div>
+    <div className="grid grid-cols-1 mt-5">
       
       {tasks.map((task) => (
         <Task

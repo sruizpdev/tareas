@@ -1,5 +1,4 @@
 import { useState } from "react";
-import NewTask from "../assets/NewTask";
 
 const Form = ({ tasks, setTasks }) => {
   const [task, setTask] = useState("");
@@ -30,21 +29,22 @@ const Form = ({ tasks, setTasks }) => {
   };
 
   return (
-    <>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          placeholder="Introduce aquí la tarea"
-          className="placeholder:text-gray-200 border-b mr-3 mb-5 pl-2 hover:border-green-500 focus:outline-0"
-          value={task}
-          onChange={(e) => setTask(e.target.value)}
-        />
+    <form onSubmit={handleSubmit} className="grid grid-cols-5 gap-2">
+      <input
+        type="text"
+        placeholder="Introduce aquí la tarea"
+        className="md:col-span-4 col-span-5 py-2 rounded-md placeholder:text-gray-200 border pl-2 focus:outline-green-200"
+        value={task}
+        onChange={(e) => setTask(e.target.value)}
+      />
 
-        <button type="submit" className="font-bold hover:text-green-500">
-          <NewTask />
-        </button>
-      </form>
-    </>
+      <button
+        type="submit"
+        className="md:col-span-1 col-span-5 py-2 bg-green-500 hover:bg-green-600 text-white px-3 rounded-md"
+      >
+        Añadir
+      </button>
+    </form>
   );
 };
 
