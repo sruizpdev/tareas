@@ -49,7 +49,7 @@ const Form = ({ tasks, setTasks, task, setTask }) => {
       <input
         type="text"
         placeholder="Introduce aquí la tarea"
-        className="md:col-span-4 col-span-5 py-2 rounded-md placeholder:text-gray-200 border pl-2 focus:outline-green-200"
+        className="md:col-span-4 col-span-5 py-2 rounded-md placeholder:text-gray-200 border border-sky-500 pl-2 focus:outline-sky-200"
         value={taskName}
         onChange={(e) => setTaskName(e.target.value)}
       />
@@ -59,7 +59,7 @@ const Form = ({ tasks, setTasks, task, setTask }) => {
         className={
           task.id
             ? "md:col-span-1 col-span-5 py-2 bg-sky-500 hover:bg-sky-600 text-white px-3 rounded-md"
-            : "md:col-span-1 col-span-5 py-2 bg-green-500 hover:bg-green-600 text-white px-3 rounded-md"
+            : "md:col-span-1 col-span-5 py-2 bg-slate-500 hover:bg-slate-600-600 text-white px-3 rounded-md"
         }
       >
         {task.id ? "Editar" : "Añadir"}
