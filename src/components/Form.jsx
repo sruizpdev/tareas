@@ -1,31 +1,47 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
-const Form = ({ tasks, setTasks }) => {
-  const [task, setTask] = useState("");
+const Form = ({ tasks, setTasks, task, setTask }) => {
+  const [taskName, setTaskName] = useState("");
   const [error, setError] = useState(false);
+
+  useEffect(() => {
+    if (Object.keys(task).length > 0) {
+      setTaskName(task.taskName);
+    }
+  }, [task]);
+
+  const generateId = () => {
+    const random = Math.random().toString().substring(2);
+    const fecha = Date.now().toString(36);
+    return random + fecha;
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    const generateId = () => {
-      const random = Math.random().toString().substring(2);
-      const fecha = Date.now().toString(36);
-      return random + fecha;
-    };
-
-    const taskObject = {
-      name: task,
-    };
-    if (task !== "") {
-      taskObject.id = generateId();
-      setTasks([...tasks, taskObject]);
-      setError(false);
-    } else {
-      setError(true);
-
+    if (taskName === "") {
+      console.log("La tarea no debe estar vacia");
       return;
     }
-    setTask("");
+
+    const taskObject = {
+      taskName,
+    };
+
+    if (task.id) {
+      taskObject.id = task.id;
+      const tasksUpdated = tasks.map((taskState) =>
+        taskState.id === task.id ? taskObject : taskState
+      );
+
+      setTasks(tasksUpdated);
+      setTask({});
+    } else {
+      taskObject.id = generateId();
+      setError(true);
+
+      setTasks([...tasks, taskObject]);
+    }
+    setTaskName("");
   };
 
   return (
@@ -34,15 +50,15 @@ const Form = ({ tasks, setTasks }) => {
         type="text"
         placeholder="Introduce aquí la tarea"
         className="md:col-span-4 col-span-5 py-2 rounded-md placeholder:text-gray-200 border pl-2 focus:outline-green-200"
-        value={task}
-        onChange={(e) => setTask(e.target.value)}
+        value={taskName}
+        onChange={(e) => setTaskName(e.target.value)}
       />
 
       <button
         type="submit"
         className="md:col-span-1 col-span-5 py-2 bg-green-500 hover:bg-green-600 text-white px-3 rounded-md"
       >
-        Añadir
+        {task.id ? "Editar" : "Añadir"}
       </button>
     </form>
   );

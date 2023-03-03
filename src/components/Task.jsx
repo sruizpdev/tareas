@@ -1,8 +1,8 @@
 import Edit from "../assets/Edit";
 import { useState } from "react";
 
-const Task = ({ task, deleteTask, editTask }) => {
-  const { id, name } = task;
+const Task = ({ task, setTask, deleteTask }) => {
+  const { id, taskName } = task;
   const [selected, setSelected] = useState(false);
 
   const handleCheckbox = () => {
@@ -22,12 +22,12 @@ const Task = ({ task, deleteTask, editTask }) => {
           className=" checked:bg-green-500 mr-3"
           onChange={() => handleCheckbox()}
         />
-        <div className={selected ? "transition-colors duration-1000 line-through text-zinc-200" : "text-zinc-700"}>{name}</div>
+        <div className={selected ? "transition-colors duration-1000 line-through text-zinc-200" : "text-zinc-700"}>{taskName}</div>
       </div>
       <button
         type="submit"
         className=" hover:text-sky-500"
-        onClick={() => editTask(id)}
+        onClick={() => setTask(task)}
       >
         <Edit />
       </button>
