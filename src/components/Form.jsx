@@ -56,7 +56,11 @@ const Form = ({ tasks, setTasks, task, setTask }) => {
 
       <button
         type="submit"
-        className="md:col-span-1 col-span-5 py-2 bg-green-500 hover:bg-green-600 text-white px-3 rounded-md"
+        className={
+          task.id
+            ? "md:col-span-1 col-span-5 py-2 bg-sky-500 hover:bg-sky-600 text-white px-3 rounded-md"
+            : "md:col-span-1 col-span-5 py-2 bg-green-500 hover:bg-green-600 text-white px-3 rounded-md"
+        }
       >
         {task.id ? "Editar" : "Añadir"}
       </button>
