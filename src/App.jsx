@@ -46,7 +46,12 @@ function App() {
             Eliminar todo
           </button>
         ) : (
-          "No hay tareas"
+          <div className="text-center">
+            
+            
+            <p>No hay tareas pendientes. </p>
+            <p>Enhorabuena !!!</p>
+          </div>
         )}
       </div>
     </>
